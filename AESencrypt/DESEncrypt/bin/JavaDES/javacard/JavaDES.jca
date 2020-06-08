@@ -1,0 +1,225 @@
+// converted by version 1.3
+// on Mon Jun 08 11:20:44 IST 2020
+
+.package JavaDES {
+	.aid 0x66:0x55:0x44:0x33:0x22:0x11;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.5;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0x66:0x55:0x44:0x33:0x22:0x11:0x0 JavaDES;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] JavaDES/volatileMem;
+		// 1
+		instanceFieldRef byte[] JavaDES/nonVolatileMem;
+		// 2
+		instanceFieldRef 1.1 JavaDES/desCipher;
+		// 3
+		instanceFieldRef 2.10 JavaDES/desKey;
+		// 4
+		staticMethodRef JavaDES/<init>()V;
+		// 5
+		classRef JavaDES;
+		// 6
+		staticMethodRef 1.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	1.1;
+
+		// 7
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 8
+		staticMethodRef 2.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 9
+		classRef 2.10;		// javacard/security/DESKey
+		// 10
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 11
+		virtualMethodRef 0.3.1()V;		// register()V
+		// 12
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 13
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 14
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 15
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 16
+		virtualMethodRef 1.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 17
+		virtualMethodRef 1.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 18
+		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 19
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+	}
+
+	.class public JavaDES 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			 1.1 desCipher 0;		// Ljavacardx/crypto/Cipher;
+			 2.10 desKey 1;		// Ljavacard/security/DESKey;
+			 0.10 apdu 2;		// Ljavacard/framework/APDU;
+			private byte[] volatileMem 3;		// [B
+			private byte[] nonVolatileMem 4;		// [B
+			private static final byte INS_SET_KEY = 16;		// B
+			private static final byte INS_ENCRYPT = 32;		// B
+			private static final byte INS_DECRYPT = 48;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	new 5;		// JavaDES/JavaDES
+					dup;
+					invokespecial 4;		// JavaDES/JavaDES.<init>()V
+					pop;
+					return;
+		}
+
+		.method protected <init>()V 1 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 7;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 10;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 0;		// reference JavaDES/JavaDES.volatileMem
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 1;		// reference JavaDES/JavaDES.nonVolatileMem
+					aload_0;
+					sconst_5;
+					sconst_0;
+					invokestatic 6;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 2;		// reference JavaDES/JavaDES.desCipher
+					aload_0;
+					sconst_3;
+					bspush 64;
+					sconst_0;
+					invokestatic 8;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 9;		// T_CLASSORINTERFACE javacard/security/DESKey
+					putfield_a 3;		// reference JavaDES/JavaDES.desKey
+					aload_0;
+					invokevirtual 11;		// register()V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 6;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 12;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 13;		// getBuffer()[B
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 14;		// setIncomingAndReceive()S
+					pop;
+					aload_2;
+					sconst_4;
+					baload;
+					bspush 16;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 15;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					sconst_1;
+					baload;
+					slookupswitch L9 3 16 L6 32 L7 48 L8;
+				L6:	getfield_a_this 3;		// reference JavaDES/JavaDES.desKey
+					aload_2;
+					sconst_5;
+					invokeinterface 3 9 5;		// javacard/security/DESKey
+					goto L10;
+				L7:	getfield_a_this 2;		// reference JavaDES/JavaDES.desCipher
+					getfield_a_this 3;		// reference JavaDES/JavaDES.desKey
+					sconst_2;
+					invokevirtual 16;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 2;		// reference JavaDES/JavaDES.desCipher
+					aload_2;
+					sconst_5;
+					bspush 16;
+					getfield_a_this 0;		// reference JavaDES/JavaDES.volatileMem
+					sconst_0;
+					invokevirtual 17;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 0;		// reference JavaDES/JavaDES.volatileMem
+					sconst_0;
+					aload_2;
+					sconst_0;
+					bspush 16;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					bspush 16;
+					invokevirtual 19;		// setOutgoingAndSend(SS)V
+					goto L10;
+				L8:	getfield_a_this 2;		// reference JavaDES/JavaDES.desCipher
+					getfield_a_this 3;		// reference JavaDES/JavaDES.desKey
+					sconst_1;
+					invokevirtual 16;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 2;		// reference JavaDES/JavaDES.desCipher
+					aload_2;
+					sconst_5;
+					bspush 16;
+					getfield_a_this 0;		// reference JavaDES/JavaDES.volatileMem
+					sconst_0;
+					invokevirtual 17;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 0;		// reference JavaDES/JavaDES.volatileMem
+					sconst_0;
+					aload_2;
+					sconst_0;
+					bspush 16;
+					invokestatic 18;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					bspush 16;
+					invokevirtual 19;		// setOutgoingAndSend(SS)V
+					goto L10;
+				L9:	sspush 27904;
+					invokestatic 15;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	return;
+		}
+
+	}
+
+}

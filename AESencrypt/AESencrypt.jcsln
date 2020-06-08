@@ -1,0 +1,24 @@
+<JavaCardSolution name="AESencrypt">
+    <JavaCardProjects>
+        <JavaCardProject path="AESencrypt/AESencrypt.jcproj" />
+        <JavaCardProject path="DESEncrypt/DESEncrypt.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="AESencrypt" ATR="3B 90 95 80 81 1F 03 18">
+        <ConfigItem name="AESencrypt">
+            <InstallConfig>
+                <PKG project_name="AESencrypt" pkg_name="JavaAES" aid="11 22 33 44 55 66" major="1" minor="0">
+                    <APPLET aid="11 22 33 44 55 66 00" authority="" instanceaid="" parameter="" privileges="" index="9896" name="JavaAES" />
+                </PKG>
+                <PKG project_name="DESEncrypt" pkg_name="JavaDES" aid="66 55 44 33 22 11" major="1" minor="0">
+                    <APPLET aid="66 55 44 33 22 11 00" authority="" instanceaid="" parameter="" privileges="" index="-736" name="JavaDES" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>
