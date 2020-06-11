@@ -11,9 +11,9 @@ public class ECEncrypt extends Applet
     short len;
 
     KeyPair kpU, kpV;                    //class
-    ECPrivateKey privKeyU, privKeyV;     //Interface
-    ECPublicKey pubKeyU, pubKeyV;         //Interface
-    KeyAgreement ecdhU, ecdhV;            //class
+    ECPrivateKey privKeyU, privKeyV;    //Interface
+    ECPublicKey pubKeyU, pubKeyV;      //Interface
+    KeyAgreement ecdhU, ecdhV;        //class
     
     //INSTRUCTION_BYTE_CODE
     public static final byte INS_PROC_INSD1 = (byte) 0xD1;
@@ -102,7 +102,7 @@ public class ECEncrypt extends Applet
 					len = pubKeyV.getW(baTemp,(short)0);
 				}
 				apdu.setOutgoing();
-				apdu.setOutgoingLength((short)0);
+				apdu.setOutgoingLength((short) len);
 				apdu.sendBytesLong(baTemp,(short)0,len);
 				break;
 			
@@ -116,7 +116,7 @@ public class ECEncrypt extends Applet
 					len = privKeyV.getS(baTemp,(short) 0);
 				}
 				apdu.setOutgoing();
-				apdu.setOutgoingLength((short) 0);
+				apdu.setOutgoingLength((short) len);
 				apdu.sendBytesLong(baTemp,(short) 0, len);
 				break;
 			
@@ -142,18 +142,18 @@ public class ECEncrypt extends Applet
 	     	{
 			case 0x01: //Process "U" stand Point
 				len = privKeyU.getS(baTemp, (short) 0);
-				baPrivKeyU = new byte[255];
+				baPrivKeyU = new byte[len];
 				Util.arrayCopyNonAtomic( baTemp,(short) 0, baPrivKeyU, (short) 0, len);
 				
 				
-				len =pubKeyU.getW(baTemp,(short) 0);
-				baPubKeyU = new byte[255];
-				Util.arrayCopyNonAtomic(baTemp, (short) 0, baPubKeyU, (short) 0 , len);
+				len = pubKeyV.getW(baTemp,(short) 0);
+				baPubKeyV = new byte[len];
+				Util.arrayCopyNonAtomic(baTemp, (short) 0, baPubKeyV, (short) 0 , len);
 				
 				
 				ecdhU = KeyAgreement.getInstance(KeyAgreement.ALG_EC_SVDP_DH, false);
 				ecdhU.init(privKeyU);
-				len = ecdhU.generateSecret(baPrivKeyV,(short) 0, len, baTemp,(short) 0);
+				len = ecdhU.generateSecret(baPubKeyV,(short) 0, len, baTemp,(short) 0);
 				
 				apdu.setOutgoing();
 				apdu.setOutgoingLength((short) len);
@@ -162,16 +162,17 @@ public class ECEncrypt extends Applet
 				
 			case 0x02: //Process "V" stand Point
 				len = privKeyV.getS(baTemp, (short) 0);
-				baPrivKeyV = new byte[255];
+				baPrivKeyV = new byte[len];
 				Util.arrayCopyNonAtomic( baTemp,(short) 0, baPrivKeyV, (short) 0, len);
 				
-				len = pubKeyV.getW(baTemp, (short) 0);
-				baPubKeyV = new byte[255];
+				len = pubKeyU.getW(baTemp, (short) 0);
+				baPubKeyU = new byte[len];
 				Util.arrayCopyNonAtomic(baTemp, (short) 0, baPubKeyU, (short) 0, len);
 				
 				ecdhV = KeyAgreement.getInstance(KeyAgreement.ALG_EC_SVDP_DH, false);
 				ecdhV.init(privKeyV);
-				len = ecdhV.generateSecret(baPrivKeyU, (short) 0, len, baTemp, (short) 0);
+				len = ecdhV.generateSecret(baPubKeyU, (short) 0, len, baTemp, (short) 0);
+				
 				
 				apdu.setOutgoing();
 				apdu.setOutgoingLength((short) len);

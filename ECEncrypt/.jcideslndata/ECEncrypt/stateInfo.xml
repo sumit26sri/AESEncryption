@@ -9,9 +9,9 @@
 <FileNodes>
 <ActiveFile>
 <fileName>ECEncrypt/src/ECEncrypt/ECEncrypt.java</fileName>
-<line>60</line>
+<line>32</line>
 <Tabbed>1</Tabbed>
-<id>6061445</id>
+<id>326061445</id>
 </ActiveFile>
 </FileNodes>
 <FindHistory/>
@@ -19,6 +19,14 @@
 <WatchHistory>
 <Node>buf</Node>
 <Node>kpU</Node>
+<Node>baTemp</Node>
+<Node>selectingApplet</Node>
+<Node>pubKeyU</Node>
+<Node>kpV</Node>
+<Node>privKeyV</Node>
+<Node>pubKeyV</Node>
+<Node>len</Node>
+<Node>reason</Node>
 </WatchHistory>
 <MemoryStyleViewsHistory>
 <View/>
