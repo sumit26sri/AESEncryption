@@ -1,34 +1,6 @@
 <JavaCardSolution name="C:\workspace\AESencrypt\.jcideslndata\AESencrypt\breakpoint.xml">
     <breakPointInfo>
         <bpVersion>2</bpVersion>
-        <projects>
-            <project name="RSAEncrypt">
-                <packages>
-                    <package name="JavaRSA">
-                        <files>
-                            <file name="JavaRSA.java">
-                                <lines>
-                                    <line>
-                                        <lineNumber>27</lineNumber>
-                                        <valid>1</valid>
-                                        <invalidTimes>0</invalidTimes>
-                                    </line>
-                                    <line>
-                                        <lineNumber>37</lineNumber>
-                                        <valid>1</valid>
-                                        <invalidTimes>0</invalidTimes>
-                                    </line>
-                                    <line>
-                                        <lineNumber>32</lineNumber>
-                                        <valid>1</valid>
-                                        <invalidTimes>0</invalidTimes>
-                                    </line>
-                                </lines>
-                            </file>
-                        </files>
-                    </package>
-                </packages>
-            </project>
-        </projects>
+        <projects />
     </breakPointInfo>
 </JavaCardSolution>

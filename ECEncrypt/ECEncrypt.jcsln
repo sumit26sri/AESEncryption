@@ -1,0 +1,20 @@
+<JavaCardSolution name="ECEncrypt">
+    <JavaCardProjects>
+        <JavaCardProject path="ECEncrypt/ECEncrypt.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Config activeconfig="ECEncrypt" ATR="">
+        <ConfigItem name="ECEncrypt">
+            <InstallConfig>
+                <PKG project_name="ECEncrypt" pkg_name="ECEncrypt" aid="66 55 44 33 22 11" major="1" minor="0">
+                    <APPLET aid="66 55 44 33 22 11 00" authority="" instanceaid="" parameter="" privileges="" index="31648" name="ECEncrypt" />
+                </PKG>
+            </InstallConfig>
+            <DebugInfo>
+                <Protocol name="T0|T1" />
+            </DebugInfo>
+        </ConfigItem>
+    </Config>
+</JavaCardSolution>

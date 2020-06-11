@@ -1,6 +1,8 @@
 <JavaCardSolution name="AESencrypt">
     <JavaCardProjects>
         <JavaCardProject path="RSAEncrypt/RSAEncrypt.jcproj" />
+        <JavaCardProject path="ECDHEncrypt/ECDHEncrypt.jcproj" />
+        <JavaCardProject path="ECDHencrypt/ECDHencrypt.jcproj" />
     </JavaCardProjects>
     <Build>
         <BuildDependon />
@@ -10,6 +12,12 @@
             <InstallConfig>
                 <PKG project_name="RSAEncrypt" pkg_name="JavaRSA" aid="11 22 33 44 55 66" major="1" minor="0">
                     <APPLET aid="11 22 33 44 55 66 00" authority="" instanceaid="" parameter="" privileges="" index="10560" name="JavaRSA" />
+                </PKG>
+                <PKG project_name="ECDHEncrypt" pkg_name="ECDHEncrypt" aid="66 55 44 33 22 11" major="1" minor="0">
+                    <APPLET aid="66 55 44 33 22 11 00" authority="" instanceaid="" parameter="" privileges="" index="-5400" name="ECDHEncrypt" />
+                </PKG>
+                <PKG project_name="ECDHencrypt" pkg_name="ECDHencrypt" aid="66 55 44 33 22 11" major="1" minor="0">
+                    <APPLET aid="66 55 44 33 22 11 00" authority="" instanceaid="" parameter="" privileges="" index="28720" name="ECDHencrypt" />
                 </PKG>
             </InstallConfig>
             <DebugInfo>

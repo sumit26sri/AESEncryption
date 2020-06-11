@@ -50,6 +50,7 @@ public class JavaRSA extends Applet
 	    	rsaPubKey.getModulus(buf,(short)0x00);
 	    	apdu.setOutgoingAndSend((short)0x00,(short)256);
 	    	break;
+	    	
 	    case INS_ENCRYPT:
 	    	mDigest.reset();
 	    	hash_len = mDigest.doFinal(buf,(short)ISO7816.OFFSET_CDATA,len,Hash,(short)0x00);
@@ -58,6 +59,7 @@ public class JavaRSA extends Applet
 	    	Util.arrayCopy(Hash,(short)0x00, buf,(short)0x00,hash_len);
 	    	apdu.setOutgoingAndSend((short)0x00, hash_len);
 	    	break;
+	    	
 	    case INS_DECRYPT:
 	    	mDigest.reset();
 	    	hash_len = mDigest.doFinal(buf,(short) ISO7816.OFFSET_EXT_CDATA,len, Hash,(short)0x00);
@@ -66,6 +68,7 @@ public class JavaRSA extends Applet
 	    	Util.arrayCopy(Hash,(short)0x00,buf,(short)0x00,hash_len);
 	    	apdu.setOutgoingAndSend((short)0x00,hash_len);
 	    	break ;
+	    	
 		default:
 			ISOException.throwIt(ISO7816.SW_INS_NOT_SUPPORTED);
 		}

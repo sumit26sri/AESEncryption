@@ -1,0 +1,12 @@
+<JavaCardConfiguration name="ECEncrypt">
+    <Config activeconfig="ECEncrypt">
+        <ConfigItem name="ECEncrypt">
+            <InstallConfig>
+                <PKG project_name="ECEncrypt" pkg_name="ECEncrypt" aid="66 55 44 33 22 11">
+                    <APPLET aid="66 55 44 33 22 11 00" name="ECEncrypt" />
+                </PKG>
+            </InstallConfig>
+            <ScriptConfig before_build="" after_build="" />
+        </ConfigItem>
+    </Config>
+</JavaCardConfiguration>
